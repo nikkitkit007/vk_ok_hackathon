@@ -9,14 +9,14 @@ import org.aspectj.lang.annotation.Before;
 @Aspect
 public class SocketAspect {
 
-    @Before("execution(* java.net.Socket+.new(..))")
+    @Before("call(java.net.Socket.new(..))")
     public void logSocketCreation(JoinPoint joinPoint) {
         System.out.println("Socket created in " + joinPoint.getSignature().getDeclaringTypeName());
     }
 
-    @After("execution(* java.io.Printstream.println(..))")
+    /*@After("call(* println(..))")
     public void catchPrintln(JoinPoint joinPoint) {
-        System.out.println("got sout");
-    }
+        System.out.print("1 sout");
+    }*/
 
 }
