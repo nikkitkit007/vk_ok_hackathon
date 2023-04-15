@@ -1,0 +1,17 @@
+-Xajruntimetarget:1.5
+-1.8
+-encoding
+UTF-8
+-source
+1.8
+-target
+1.8
+-classpath
+C:\Users\Elite\.m2\repository\org\aspectj\aspectjrt\1.9.19\aspectjrt-1.9.19.jar;C:\Users\Elite\Desktop\hackaton\sdk_vk_hackaton\target\classes
+-inpath
+C:\Users\Elite\Desktop\hackaton\sdk_vk_hackaton\target\classes
+-d
+C:\Users\Elite\Desktop\hackaton\sdk_vk_hackaton\target\classes
+-s
+C:\Users\Elite\Desktop\hackaton\sdk_vk_hackaton\target\generated-sources\aspectj-maven-plugin
+C:\Users\Elite\Desktop\hackaton\sdk_vk_hackaton\src\main\java\org\statter\aspects\SocketAspect.java
