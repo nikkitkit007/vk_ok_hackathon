@@ -1,1 +1,11 @@
+org\statter\aspects\dataSending\DataSender.class
+org\statter\aspects\URLConnectionAspect.class
+org\statter\aspects\HttpURLConnectionAspect.class
 org\statter\aspects\SocketAspect.class
+org\statter\aspects\dataSending\NoOpSSLSocketFactory.class
+org\statter\aspects\ServerSocketAspect.class
+org\statter\aspects\dataSending\NetworkData.class
+org\statter\aspects\dataSending\NoOpSSLSocketFactory$1.class
+org\statter\aspects\SocketImplAspect.class
+org\statter\aspects\dataSending\DataSender$1.class
+org\statter\aspects\URLAspect.class

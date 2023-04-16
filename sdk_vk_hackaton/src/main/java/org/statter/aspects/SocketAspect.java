@@ -6,6 +6,8 @@ import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.SourceLocation;
+import org.statter.aspects.dataSending.DataSender;
+import org.statter.aspects.dataSending.NetworkData;
 
 import java.sql.Timestamp;
 
@@ -29,6 +31,13 @@ public class SocketAspect {
         StackTraceElement [] stackTrace = thread.getStackTrace();
         StringBuilder stringBuilder = new StringBuilder();
         for (StackTraceElement element : stackTrace) {
+
+            System.out.println("class name: " + element.getClassName());
+
+            if(element.getClassName().equals("org.statter.aspects.dataSending.DataSender")){
+                return;
+            }
+
             stringBuilder.append(element.toString());
             stringBuilder.append("\n");
         }
@@ -37,6 +46,27 @@ public class SocketAspect {
 
         System.out.println("Object parameters: " + joinPoint.getStaticPart().toString());
 
+        NetworkData data = new NetworkData();
+
+        data.setStackTrace(stringBuilder.toString());
+
+        data.setStartTime(socketCreateStart.toString());
+        data.setFinishTime(socketCreateEnd.toString());
+
+        long durationInMillis = socketCreateEnd.getTime() - socketCreateStart.getTime();
+
+        long millis = durationInMillis % 1000 + 1;
+        long second = (durationInMillis / 1000) % 60;
+        long minute = (durationInMillis / (1000 * 60)) % 60;
+        long hour = (durationInMillis / (1000 * 60 * 60)) % 24;
+
+        String time = String.format("%02d:%02d:%02d.%d", hour, minute, second, millis);
+
+        data.setRunTime(time);
+
+        DataSender sender = DataSender.getInstance();
+
+        sender.SendData(data);
         //System.out.println("Socket created in " + joinPoint.getSignature().getDeclaringTypeName());
     }
 
