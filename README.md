@@ -1,10 +1,12 @@
 # vk_ok_hackathon
 
-For detect app trafic we using AspectJ. 
-Solution for maven.
+For detect app traffic we use AspectJ. 
 
-## AspectJ
-Created SDK.
+## SDK info
+- Maven plugin
+- Supported from Java 8+
+- Injects in most low level network libs in Java
+- 
 
 ____
 ## How test our SDK
