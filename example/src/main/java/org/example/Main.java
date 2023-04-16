@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         SocketClass.createSocket();
 
-        //HTTPTest.Execute();
+        HTTPTest.Execute();
 
         //DbConnection dbTest = new DbConnection();
 

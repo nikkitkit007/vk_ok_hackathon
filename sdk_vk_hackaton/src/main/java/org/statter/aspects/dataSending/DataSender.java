@@ -14,7 +14,7 @@ import java.security.cert.X509Certificate;
 
 public class DataSender {
 
-    private final String host = "https://192.168.140.23:5001/api/v1/analyzer/register";
+    private final String host = "https://192.168.140.10:5001/api/v1/analyzer/register";
     private final int port = 5001;
 
     private static  DataSender instance;

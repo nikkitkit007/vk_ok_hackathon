@@ -3,12 +3,14 @@ package org.statter.aspects;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.SourceLocation;
 import org.statter.aspects.dataSending.DataSender;
 import org.statter.aspects.dataSending.NetworkData;
 
+import java.net.Socket;
 import java.sql.Timestamp;
 
 @Aspect
@@ -23,8 +25,8 @@ public class SocketAspect {
         socketCreateStart = new Timestamp(System.currentTimeMillis());
     }
 
-    @After("call(java.net.Socket.new(..))")
-    public void afterSocketCreation(JoinPoint joinPoint) {
+    @AfterReturning(pointcut = "call(java.net.Socket.new(..))", returning = "socket")
+    public void afterSocketCreation(JoinPoint joinPoint, Socket socket) {
         socketCreateEnd = new Timestamp(System.currentTimeMillis());
 
         thread = Thread.currentThread();
@@ -47,6 +49,8 @@ public class SocketAspect {
         System.out.println("Object parameters: " + joinPoint.getStaticPart().toString());
 
         NetworkData data = new NetworkData();
+
+        data.setPackageSize(socket.toString().getBytes().length);
 
         data.setStackTrace(stringBuilder.toString());
 
