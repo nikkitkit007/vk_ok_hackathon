@@ -13,6 +13,7 @@ ____
 
 1) AspectLib: Install -> Package
 2) Example: Install -> mvn exec: java
+3) Build and run backend for demo traffic (https://github.com/n1ght-lil-bugmaker/Hackaton.AnalyzeService/tree/main)
 ____
 
 ### Simple architecture
