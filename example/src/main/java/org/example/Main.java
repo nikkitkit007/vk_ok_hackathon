@@ -1,10 +1,10 @@
 package org.example;
 
-import java.net.Socket;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
-        Socket socket = new Socket();
+    public static void main(String[] args) throws IOException {
+        SocketClass.createSocket();
 
         System.out.println("works");
     }
